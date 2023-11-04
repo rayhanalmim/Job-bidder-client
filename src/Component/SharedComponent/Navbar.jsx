@@ -4,6 +4,10 @@ const Navbar = () => {
     const navLink = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/singin">Login</NavLink></li>
+        <li><NavLink to="/singin">Add jobs</NavLink></li>
+        <li><NavLink to="/singin">My Posted Jobs</NavLink></li>
+        <li><NavLink to="/singin">My Bids</NavLink></li>
+        <li><NavLink to="/singin">Bids Requests</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">
