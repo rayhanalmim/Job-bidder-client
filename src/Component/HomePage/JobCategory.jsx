@@ -10,22 +10,25 @@ const JobCategory = () => {
     const [marketing, setMarketing] = useState([]);
     const [graphics, setGraphics] = useState([]);
 
-    const { isPending, error, data } = useQuery({
+    const { isPending, isLoading, data } = useQuery({
         queryKey: ['jobsData'],
-        queryFn: () =>
-            axios.get('http://localhost:3000/jobs')
-                .then((res) => {
-                    return res.data;
+        queryFn: async () =>
+            await fetch('http://localhost:3000/jobs')
+                .then(res => res.json())
+                .then(data => {
+                    return data;
                 })
     })
 
     useEffect(() => {
-        const webData = data.filter(jobs => jobs.category === 'Web Development');
-        const marketingData = data.filter(jobs => jobs.category === 'Digital Marketing');
-        const graphicsData = data.filter(jobs => jobs.category === 'Graphics Design');
-        setWeb(webData);
-        setMarketing(marketingData);
-        setGraphics(graphicsData);
+        if (data) {
+            const webData = data.filter(jobs => jobs.category === 'Web Development');
+            const marketingData = data.filter(jobs => jobs.category === 'Digital Marketing');
+            const graphicsData = data.filter(jobs => jobs.category === 'Graphics Design');
+            setWeb(webData);
+            setMarketing(marketingData);
+            setGraphics(graphicsData);
+        }
     }, [data])
 
     if (isPending) {
@@ -53,8 +56,8 @@ const JobCategory = () => {
                     </div>
                 </Tab>
             </TabList>
-
-            <TabPanel classNameName='pt-4'>
+            <hr />
+            <TabPanel className='pt-4'>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center">
                     {
@@ -64,31 +67,19 @@ const JobCategory = () => {
 
             </TabPanel>
             <TabPanel>
-                <p>
-                    <b>Princess Peach</b> (<i>Japanese: ピーチ姫 Hepburn: Pīchi-hime, [piː.tɕi̥ çi̥.me]</i>)
-                    is a character in Nintendos Mario franchise. Originally created by Shigeru Miyamoto,
-                    Peach is the princess of the fictional Mushroom Kingdom, which is constantly under
-                    attack by Bowser. She often plays the damsel in distress role within the series and
-                    is the lead female. She is often portrayed as Marios love interest and has appeared
-                    in Super Princess Peach, where she is the main playable character.
-                </p>
-                <p>
-                    Source:{' '}
-                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center">
+                    {
+                        marketing.map(job => <JobsCard key={job._id} job={job}></JobsCard>)
+                    }
+                </div>
+
             </TabPanel>
             <TabPanel>
-                <p>
-                    <b>Toad</b> (<i>Japanese: キノピオ Hepburn: Kinopio</i>) is a fictional character who primarily
-                    appears in Nintendos Mario franchise. Created by Japanese video game designer Shigeru Miyamoto,
-                    he is portrayed as a citizen of the Mushroom Kingdom and is one of Princess Peachs most loyal
-                    attendants; constantly working on her behalf. He is usually seen as a non-player character (NPC)
-                    who provides assistance to Mario and his friends in most games, but there are times when Toad(s)
-                    takes center stage and appears as a protagonist, as seen in Super Mario Bros. 2, Warios Woods,
-                    Super Mario 3D World, and Captain Toad: Treasure Tracker.
-                </p>
-                <p>
-                    Source:{' '}
-                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center">
+                    {
+                        graphics.map(job => <JobsCard key={job._id} job={job}></JobsCard>)
+                    }
+                </div>
             </TabPanel>
         </Tabs>
     );
