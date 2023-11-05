@@ -1,16 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthProvider";
 import axios from "axios";
 
 const AddJobs = () => {
     const {user} = useContext(AuthContext);
-
-    // const [selectedOption, setSelectedOption] = useState('option1');
-
-    // handleSelectChange = (event) => {
-    //     this.setState({ selectedOption: event.target.value });
-    //   };
 
     const handleSubmit = (e) => {
         e.preventDefault();
