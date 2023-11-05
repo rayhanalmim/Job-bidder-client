@@ -4,7 +4,7 @@ import Footer from "../Component/SharedComponent/Footer";
 
 const Root = () => {
     return (
-        <div>
+        <div className="relative">
             <div>
                 <Navbar></Navbar>
             </div>

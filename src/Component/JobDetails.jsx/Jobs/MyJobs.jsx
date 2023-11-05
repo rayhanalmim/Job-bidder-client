@@ -4,6 +4,8 @@ import { AuthContext } from "../../Authentication/AuthProvider";
 import { AiFillEdit } from 'react-icons/ai';
 import { MdDeleteForever } from 'react-icons/md';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const MyJobs = () => {
     const { user, looding } = useContext(AuthContext);
@@ -35,6 +37,33 @@ const MyJobs = () => {
 
     const handleDelete = (id) =>{
         console.log(id);
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/delete/${id}`)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.modifiedCount>0) {
+                        Swal.fire(
+                            'Congratulation!',
+                            'job updated successfully!',
+                            'success'
+                        )
+                    }
+                    refetch();
+                })
+            }
+          })
+
+           
     }
 
     return (

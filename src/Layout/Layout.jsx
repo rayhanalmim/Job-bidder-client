@@ -7,6 +7,7 @@ import SingUp from "../Component/Authentication/SingUp";
 import AddJobs from "../Component/AddJobs/AddJobs";
 import MyJobs from "../Component/JobDetails.jsx/Jobs/MyJobs";
 import EditMyJobs from "../Component/JobDetails.jsx/Jobs/EditMyJobs";
+import MyBids from "../Component/JobBids/MyBids";
 
 const Layout = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const Layout = createBrowserRouter([
                 path:'/edit/:id',
                 element:<EditMyJobs></EditMyJobs>,
                 loader: ({params}) => fetch(`http://localhost:3000/edit/${params.id}`)
+            },
+            {
+                path:'/mybids',
+                element:<MyBids></MyBids>,
             }
         ]
     }
