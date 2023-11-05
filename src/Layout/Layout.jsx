@@ -5,6 +5,7 @@ import JobDetails from "../Component/JobDetails.jsx/JobDetails";
 import SingIn from "../Component/Authentication/SingIn";
 import SingUp from "../Component/Authentication/SingUp";
 import AddJobs from "../Component/AddJobs/AddJobs";
+import MyJobs from "../Component/JobDetails.jsx/Jobs/MyJobs";
 
 const Layout = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const Layout = createBrowserRouter([
             {
                 path:'/addjobs',
                 element:<AddJobs></AddJobs>
+            },
+            {
+                path:'/myjobs',
+                element:<MyJobs></MyJobs>
             }
         ]
     }

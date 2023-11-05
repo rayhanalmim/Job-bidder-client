@@ -3,6 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import { ImBlocked } from 'react-icons/im';
 import axios from "axios";
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
 
 const JobDetails = () => {
     const {user, looding} = useContext(AuthContext);
@@ -26,6 +28,20 @@ const JobDetails = () => {
         axios.post('http://localhost:3000/bids', clintData)
         .then(res =>{
             console.log(res.data);
+            if (res.data.acknowledged) {
+                Swal.fire(
+                    'Congratulation!',
+                    'job bit successfully!',
+                    'success'
+                )
+                form.reset();
+            }
+        })
+        .catch(() =>{
+            toast.error('already bited on this job', {
+                position: "top-left",
+                theme: "dark",
+            });
         })
     }
 
@@ -71,6 +87,7 @@ const JobDetails = () => {
 
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
 
 
