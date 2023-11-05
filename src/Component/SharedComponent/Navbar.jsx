@@ -1,14 +1,42 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Authentication/AuthProvider";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+    const { user, logOut, looding } = useContext(AuthContext);
+
+    if (looding) {
+        return <div className="flex justify-center"><span className="loading loading-spinner loading-md"></span></div>;
+    }
+
     const navLink = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/singin">Login</NavLink></li>
-        <li><NavLink to="/singin">Add jobs</NavLink></li>
-        <li><NavLink to="/singin">My Posted Jobs</NavLink></li>
-        <li><NavLink to="/singin">My Bids</NavLink></li>
-        <li><NavLink to="/singin">Bids Requests</NavLink></li>
+        <li><NavLink to="/add">Add jobs</NavLink></li>
+        <li><NavLink to="/myjob">My Posted Jobs</NavLink></li>
+        <li><NavLink to="/mybids">My Bids</NavLink></li>
+        <li><NavLink to="/bidsreq">Bids Requests</NavLink></li>
     </>
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.error('log Out successfully', {
+                    position: "top-left",
+                    theme: "dark",
+                });
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                console.error(errorMessage);
+                toast.error(errorMessage, {
+                    position: "top-left",
+                    theme: "dark",
+                });
+            })
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -28,7 +56,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                {
+                    user ? <Link onClick={handleLogOut} className='btn w-28 btn-outline btn-sm '>Logout</Link> : <Link to='/login' className='btn w-28 btn-outline btn-sm'>Login</Link>
+                }
             </div>
         </div>
     );
