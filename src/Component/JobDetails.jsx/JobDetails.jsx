@@ -21,8 +21,9 @@ const JobDetails = () => {
         const clintEmail = form.clintEmail.value;
         const OfferedPrice = form.price.value;
         const clintDateline = form.date.value;
+        const stutas = 'pending';
         
-        const clintData = {...job, clintEmail, OfferedPrice, clintDateline}
+        const clintData = {...job, clintEmail, OfferedPrice, clintDateline, stutas}
         console.log(clintData)
 
         axios.post('http://localhost:3000/bids', clintData)

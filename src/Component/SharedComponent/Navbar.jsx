@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><NavLink to="/addjobs">Add jobs</NavLink></li>
         <li><NavLink to="/myjobs">My Posted Jobs</NavLink></li>
         <li><NavLink to="/mybids">My Bids</NavLink></li>
-        <li><NavLink to="/bidsreq">Bids Requests</NavLink></li>
+        <li><NavLink to="/bidsrequest">Bids Requests</NavLink></li>
     </>
 
     const handleLogOut = () => {

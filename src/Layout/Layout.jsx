@@ -8,6 +8,7 @@ import AddJobs from "../Component/AddJobs/AddJobs";
 import MyJobs from "../Component/JobDetails.jsx/Jobs/MyJobs";
 import EditMyJobs from "../Component/JobDetails.jsx/Jobs/EditMyJobs";
 import MyBids from "../Component/JobBids/MyBids";
+import BidsReq from "../Component/JobBids/BidsReq";
 
 const Layout = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const Layout = createBrowserRouter([
             {
                 path:'/mybids',
                 element:<MyBids></MyBids>,
+            },
+            {
+                path:'/bidsrequest',
+                element:<BidsReq></BidsReq>
             }
         ]
     }
