@@ -1,7 +1,39 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
+import JobsCard from "../SharedComponent/JobsCard";
 
 const JobCategory = () => {
+    const [web, setWeb] = useState([]);
+    const [marketing, setMarketing] = useState([]);
+    const [graphics, setGraphics] = useState([]);
+
+    const { isPending, error, data } = useQuery({
+        queryKey: ['jobsData'],
+        queryFn: () =>
+            axios.get('http://localhost:3000/jobs')
+                .then((res) => {
+                    return res.data;
+                })
+    })
+
+    useEffect(() => {
+        const webData = data.filter(jobs => jobs.category === 'Web Development');
+        const marketingData = data.filter(jobs => jobs.category === 'Digital Marketing');
+        const graphicsData = data.filter(jobs => jobs.category === 'Graphics Design');
+        setWeb(webData);
+        setMarketing(marketingData);
+        setGraphics(graphicsData);
+    }, [data])
+
+    if (isPending) {
+        return <div><h3>pending</h3></div>
+    }
+
+    console.log(web, marketing, graphics);
+
     return (
         <Tabs>
             <TabList className='flex justify-center'>
@@ -21,22 +53,15 @@ const JobCategory = () => {
                     </div>
                 </Tab>
             </TabList>
-            <hr />
 
-            <TabPanel className='pt-4'>
-                <p>
-                    <b>Mario</b> (<i>Japanese: マリオ Hepburn: Mario, [ma.ɾʲi.o]</i>) (<i>English:
-                        /ˈmɑːrioʊ/; Italian: [ˈmaːrjo]</i>) is a fictional character in the Mario video
-                    game franchise, owned by Nintendo and created by Japanese video game designer
-                    Shigeru Miyamoto. Serving as the companys mascot and the eponymous protagonist
-                    of the series, Mario has appeared in over 200 video games since his creation.
-                    Depicted as a short, pudgy, Italian plumber who resides in the Mushroom
-                    Kingdom, his adventures generally center upon rescuing Princess Peach from the
-                    Koopa villain Bowser. His younger brother and sidekick is Luigi.
-                </p>
-                <p>
-                    Source:{' '}
-                </p>
+            <TabPanel classNameName='pt-4'>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-center">
+                    {
+                        web.map(job => <JobsCard key={job._id} job={job}></JobsCard>)
+                    }
+                </div>
+
             </TabPanel>
             <TabPanel>
                 <p>
