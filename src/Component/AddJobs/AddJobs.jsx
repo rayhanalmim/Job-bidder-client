@@ -40,7 +40,7 @@ const AddJobs = () => {
     }
 
     return (
-        <div className="w-11/12 mx-auto pb-4">
+        <div className="w-11/12 mx-auto py-4">
             <h3 className=" text-center font-bold text-3xl">Add Jobs</h3>
             <form onSubmit={handleSubmit}>
                 <div className="grid gap-6 mt-4 mb-6 md:grid-cols-2">

@@ -69,7 +69,10 @@ const MyBids = () => {
 
     return (
         <div>
-            <div className="flex justify-end pb-5">
+        
+            {
+                myJobs.length ? <div>
+                        <div className="flex justify-end pb-5">
                 <div className="flex gap-3">
                     <div className="flex justify-center items-center">
                         <h3 className="font-bold text-lg">Sort By: </h3>
@@ -81,8 +84,7 @@ const MyBids = () => {
                     </select>
                 </div>
             </div>
-            {
-                myJobs.length ? <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -146,6 +148,7 @@ const MyBids = () => {
 
                         </tbody>
                     </table>
+                </div>
                 </div> : <div className="text-center">
                     <div className="flex justify-center">
                         <img className="w-2/5" src="https://i.ibb.co/p0zvNR2/Pngtree-not-found-5408094.png" alt="" />

@@ -74,7 +74,7 @@ const MyJobs = () => {
                 </div>
                 <h3 className="text-2xl -mt-8 font-bold">No post found</h3>
             </div> :
-                    <div className="grid grid-cols-2 gap-3 justify-items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 justify-items-center pt-3">
                         {
                             data.map(job => <div key={job._id} className="p-6 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{job.jobTitle}</h5>
@@ -85,7 +85,7 @@ const MyJobs = () => {
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Minimum Price: {job.minPrice}</p>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Maximum Price: {job.maxPrice}</p>
                                 </div>
-                                <div className="flex gap-5">
+                                <div className="flex flex-col md:flex-row gap-0 md:gap-5">
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Category: {job.category}</p>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Deadline: {job.deadline}</p>
                                 </div>

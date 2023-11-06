@@ -41,17 +41,17 @@ const JobCategory = () => {
             <TabList className='flex justify-center'>
                 <Tab>
                     <div className="py-3 cursor-pointer">
-                        <h3 className="text-center text-2xl !font-bold">Web development</h3>
+                        <h3 className="text-center text-lg md:text-2xl !font-bold">Web development</h3>
                     </div>
                 </Tab>
                 <Tab>
                     <div className="py-3 cursor-pointer">
-                        <h3 className="text-center text-2xl !font-bold">Digital marketing</h3>
+                        <h3 className="text-center text-lg md:text-2xl !font-bold">Digital marketing</h3>
                     </div>
                 </Tab>
                 <Tab>
                     <div className="py-3 cursor-pointer">
-                        <h3 className="text-center text-2xl !font-bold">Graphics design</h3>
+                        <h3 className="text-center text-lg md:text-2xl !font-bold">Graphics design</h3>
                     </div>
                 </Tab>
             </TabList>

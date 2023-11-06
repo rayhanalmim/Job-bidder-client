@@ -58,7 +58,7 @@ const Navbar = () => {
                 <div className="flex gap-3">
                     <img className="w-24 pt-3 xl:w-40" src="https://i.ibb.co/swpWvDd/Artboard-1-copy-2-1920w.png" alt="" />
                     <div className="flex justify-center items-center">
-                    <h3 className="font-bold text-2xl xl:text-3xl hidden md:block">JobMastersHub</h3>
+                    <h3 className="font-bold text-2xl xl:text-3xl hidden md:block lg:hidden xl:block">JobMastersHub</h3>
                     </div>
                 </div>
             </div>
