@@ -53,8 +53,8 @@ const MyBids = () => {
 
     return (
         <div>
-
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            {
+                data.length ? <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -118,7 +118,15 @@ const MyBids = () => {
                         
                     </tbody>
                 </table>
+            </div> : <div className="text-center">
+                <div className="flex justify-center">
+                    <img className="w-2/5" src="https://i.ibb.co/p0zvNR2/Pngtree-not-found-5408094.png" alt="" />
+                </div>
+                <h3 className="text-2xl -mt-20 font-bold">No data avalable</h3>
             </div>
+            }
+
+            
             <ToastContainer></ToastContainer>
         </div>
     );

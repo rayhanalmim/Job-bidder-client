@@ -9,15 +9,15 @@ const Root = () => {
 
     useEffect(()=>{
         if(loc.pathname == '/'){
-            document.title = `Job-Home`
+            document.title = `Job | Home`
         }
         else{
-            document.title = `Job ${loc.pathname.replace("/", '-')}`
+            document.title = `Job ${loc.pathname.replace("/", '| ')}`
         }
         if(loc.state){
-            document.title = `Job ${loc.state}`
+            document.title = `Job | ${loc.state}`
         }
-    },[loc.pathname])
+    },[loc.pathname,loc.state])
 
     return (
         <div className="relative">

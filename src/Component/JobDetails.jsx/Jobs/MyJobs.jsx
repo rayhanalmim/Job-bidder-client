@@ -69,7 +69,12 @@ const MyJobs = () => {
     return (
         <div>
             {
-                data.length == 0 ? <div>No jobs found</div> :
+                data.length == 0 ? <div className="text-center">
+                <div className="flex justify-center">
+                    <img className="w-2/5" src="https://i.ibb.co/z69HTyD/9170826.jpg" alt="" />
+                </div>
+                <h3 className="text-2xl -mt-8 font-bold">No post found</h3>
+            </div> :
                     <div className="grid grid-cols-2 gap-3 justify-items-center">
                         {
                             data.map(job => <div key={job._id} className="p-6 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

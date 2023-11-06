@@ -31,7 +31,7 @@ const JobCategory = () => {
     }, [data])
 
     if (isPending) {
-        return <div><h3>pending</h3></div>
+        return <div className="flex justify-center"><span className="loading loading-spinner loading-md"></span></div>
     }
 
     console.log(web, marketing, graphics);
