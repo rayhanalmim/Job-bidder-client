@@ -13,13 +13,13 @@ const MyBids = () => {
     const { isPending, isLoading, data, refetch } = useQuery({
         queryKey: ['Mybids'],
         queryFn: async () =>
-            await fetch(`http://localhost:3000/mybids?email=${user.email}`)
-                .then(res => res.json())
+            await axios.get(`http://localhost:3000/mybids?email=${user.email}`,{withCredentials: true})
                 .then(data => {
-                    setMyJobs(data);
-                    return data;
+                    setMyJobs(data.data);
+                    return data.data;
                 })
     })
+    
 
     if (looding) {
         return <div className="flex justify-center"><span className="loading loading-spinner loading-md"></span></div>;
@@ -58,7 +58,7 @@ const MyBids = () => {
         setSelectedSort(selectedValue);
         console.log('Selected value:', selectedValue);
 
-        axios.get(`http://localhost:3000/sortedmybids?email=${user.email}&sortby=${selectedValue}`)
+        axios.get(`http://localhost:3000/sortedmybids?email=${user.email}&sortby=${selectedValue}`,{withCredentials: true})
         .then(res =>{
             console.log(res.data);
             setMyJobs(res.data)

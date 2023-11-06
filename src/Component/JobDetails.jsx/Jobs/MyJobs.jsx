@@ -14,10 +14,9 @@ const MyJobs = () => {
     const { isPending, isLoading, data, refetch } = useQuery({
         queryKey: ['MyPostedJobs'],
         queryFn: async () =>
-            await fetch(`http://localhost:3000/myjobs?email=${user.email}`)
-                .then(res => res.json())
+            await axios.get(`http://localhost:3000/myjobs?email=${user.email}`,{withCredentials:true})
                 .then(data => {
-                    return data;
+                    return data.data;
                 })
     })
 

@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import axios from "axios";
-import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
@@ -11,13 +10,12 @@ import './bids.css';
 const BidsReq = () => {
     const { user, looding } = useContext(AuthContext);
 
-    const { isPending, isLoading, data, refetch } = useQuery({
+    const { isPending, data, refetch } = useQuery({
         queryKey: ['BidsReq'],
         queryFn: async () =>
-            await fetch(`http://localhost:3000/bidsreq?email=${user.email}`)
-                .then(res => res.json())
+            await axios.get(`http://localhost:3000/bidsreq?email=${user.email}`,{withCredentials: true})
                 .then(data => {
-                    return data;
+                    return data.data;
                 })
     })
 
