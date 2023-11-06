@@ -10,6 +10,7 @@ import EditMyJobs from "../Component/JobDetails.jsx/Jobs/EditMyJobs";
 import MyBids from "../Component/JobBids/MyBids";
 import BidsReq from "../Component/JobBids/BidsReq";
 import ErrorPage from "../Component/HomePage/ErrorPage";
+import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 
 const Layout = createBrowserRouter([
     {
@@ -23,24 +24,24 @@ const Layout = createBrowserRouter([
             },
             {
                 path:'/jobs/:id',
-                element:<JobDetails></JobDetails>,
+                element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
             },
             {
-                path:'/singIn',
+                path:'/SingIn',
                 element:<SingIn></SingIn>
             },
             {
-                path:'/singUp',
+                path:'/SingUp',
                 element:<SingUp></SingUp>
             },
             {
-                path:'/addjobs',
-                element:<AddJobs></AddJobs>
+                path:'/Addjobs',
+                element:<PrivateRoute><AddJobs></AddJobs></PrivateRoute>
             },
             {
-                path:'/myjobs',
-                element:<MyJobs></MyJobs>
+                path:'/Myjobs',
+                element:<PrivateRoute><MyJobs></MyJobs></PrivateRoute>
             },
             {
                 path:'/edit/:id',
@@ -48,12 +49,12 @@ const Layout = createBrowserRouter([
                 loader: ({params}) => fetch(`http://localhost:3000/edit/${params.id}`)
             },
             {
-                path:'/mybids',
-                element:<MyBids></MyBids>,
+                path:'/Mybids',
+                element:<PrivateRoute><MyBids></MyBids></PrivateRoute>,
             },
             {
-                path:'/bidsrequest',
-                element:<BidsReq></BidsReq>
+                path:'/Bidsrequest',
+                element:<PrivateRoute><BidsReq></BidsReq></PrivateRoute>
             }
         ]
     }

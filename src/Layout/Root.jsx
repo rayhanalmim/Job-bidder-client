@@ -1,8 +1,24 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Component/SharedComponent/Navbar";
 import Footer from "../Component/SharedComponent/Footer";
+import { useEffect } from "react";
 
 const Root = () => {
+
+    const loc = useLocation();
+
+    useEffect(()=>{
+        if(loc.pathname == '/'){
+            document.title = `Job-Home`
+        }
+        else{
+            document.title = `Job ${loc.pathname.replace("/", '-')}`
+        }
+        if(loc.state){
+            document.title = `Job ${loc.state}`
+        }
+    },[loc.pathname])
+
     return (
         <div className="relative">
             <div>
