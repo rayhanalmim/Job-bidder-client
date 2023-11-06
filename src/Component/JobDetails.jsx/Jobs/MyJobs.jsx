@@ -14,7 +14,7 @@ const MyJobs = () => {
     const { isPending, isLoading, data, refetch } = useQuery({
         queryKey: ['MyPostedJobs'],
         queryFn: async () =>
-            await axios.get(`http://localhost:3000/myjobs?email=${user.email}`,{withCredentials:true})
+            await axios.get(`https://jobbidderhub-server.vercel.app/myjobs?email=${user.email}`,{withCredentials:true})
                 .then(data => {
                     return data.data;
                 })
@@ -47,7 +47,7 @@ const MyJobs = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/delete/${id}`)
+                axios.delete(`https://jobbidderhub-server.vercel.app/delete/${id}`)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.modifiedCount>0) {

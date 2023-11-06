@@ -13,7 +13,7 @@ const MyBids = () => {
     const { isPending, isLoading, data, refetch } = useQuery({
         queryKey: ['Mybids'],
         queryFn: async () =>
-            await axios.get(`http://localhost:3000/mybids?email=${user.email}`,{withCredentials: true})
+            await axios.get(`https://jobbidderhub-server.vercel.app/mybids?email=${user.email}`,{withCredentials: true})
                 .then(data => {
                     setMyJobs(data.data);
                     return data.data;
@@ -41,7 +41,7 @@ const MyBids = () => {
 
         console.log(data)
 
-        axios.put(`http://localhost:3000/complite/${id}`, data)
+        axios.put(`https://jobbidderhub-server.vercel.app/complite/${id}`, data)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount > 0) {
@@ -58,7 +58,7 @@ const MyBids = () => {
         setSelectedSort(selectedValue);
         console.log('Selected value:', selectedValue);
 
-        axios.get(`http://localhost:3000/sortedmybids?email=${user.email}&sortby=${selectedValue}`,{withCredentials: true})
+        axios.get(`https://jobbidderhub-server.vercel.app/sortedmybids?email=${user.email}&sortby=${selectedValue}`,{withCredentials: true})
         .then(res =>{
             console.log(res.data);
             setMyJobs(res.data)

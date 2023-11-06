@@ -35,13 +35,13 @@ const AuthProvider = ({children}) => {
             setLooding(false);
 
             if(currentUser){
-                axios.post('http://localhost:3000/jwt',loggedUser, {withCredentials: true})
+                axios.post('https://jobbidderhub-server.vercel.app/jwt',loggedUser, {withCredentials: true})
                 .then(res => {
                     console.log(res.data);
                 })
             }
             else{
-                axios.post('http://localhost:3000/logout', userEmail, {withCredentials: true})
+                axios.post('https://jobbidderhub-server.vercel.app/logout', userEmail, {withCredentials: true})
                 .then(res =>{
                     console.log('log out user and cookies:', res.data);
                 })

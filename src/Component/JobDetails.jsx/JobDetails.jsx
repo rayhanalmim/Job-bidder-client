@@ -26,7 +26,7 @@ const JobDetails = () => {
         const clintData = {...job, clintEmail, OfferedPrice, clintDateline, status}
         console.log(clintData)
 
-        axios.post('http://localhost:3000/bids', clintData)
+        axios.post('https://jobbidderhub-server.vercel.app/bids', clintData)
         .then(res =>{
             console.log(res.data);
             if (res.data.acknowledged) {

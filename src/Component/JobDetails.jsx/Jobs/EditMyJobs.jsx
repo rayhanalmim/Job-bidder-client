@@ -24,7 +24,7 @@ const EditMyJobs = () => {
 
         console.log(data)
 
-        axios.put(`http://localhost:3000/edit/${_id}`, data)
+        axios.put(`https://jobbidderhub-server.vercel.app/edit/${_id}`, data)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount>0) {

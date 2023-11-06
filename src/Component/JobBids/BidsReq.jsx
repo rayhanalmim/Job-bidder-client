@@ -13,7 +13,7 @@ const BidsReq = () => {
     const { isPending, data, refetch } = useQuery({
         queryKey: ['BidsReq'],
         queryFn: async () =>
-            await axios.get(`http://localhost:3000/bidsreq?email=${user.email}`,{withCredentials: true})
+            await axios.get(`https://jobbidderhub-server.vercel.app/bidsreq?email=${user.email}`,{withCredentials: true})
                 .then(data => {
                     return data.data;
                 })
@@ -39,7 +39,7 @@ const BidsReq = () => {
 
         console.log(data)
 
-        axios.put(`http://localhost:3000/status/${id}`, data)
+        axios.put(`https://jobbidderhub-server.vercel.app/status/${id}`, data)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount>0) {
@@ -57,7 +57,7 @@ const BidsReq = () => {
 
         console.log(data)
 
-        axios.put(`http://localhost:3000/approve/${id}`, data)
+        axios.put(`https://jobbidderhub-server.vercel.app/approve/${id}`, data)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount>0) {

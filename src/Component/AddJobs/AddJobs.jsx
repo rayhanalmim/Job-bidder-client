@@ -25,7 +25,7 @@ const AddJobs = () => {
 
         console.log(data)
 
-        axios.post('http://localhost:3000/jobs', data)
+        axios.post('https://jobbidderhub-server.vercel.app/jobs', data)
             .then(res => {
                 console.log(res.data);
                 if (res.data.acknowledged) {

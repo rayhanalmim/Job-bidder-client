@@ -25,7 +25,7 @@ const Layout = createBrowserRouter([
             {
                 path:'/jobs/:id',
                 element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+                loader: ({params}) => fetch(`https://jobbidderhub-server.vercel.app/jobs/${params.id}`)
             },
             {
                 path:'/SingIn',
@@ -46,7 +46,7 @@ const Layout = createBrowserRouter([
             {
                 path:'/edit/:id',
                 element:<EditMyJobs></EditMyJobs>,
-                loader: ({params}) => fetch(`http://localhost:3000/edit/${params.id}`)
+                loader: ({params}) => fetch(`https://jobbidderhub-server.vercel.app/edit/${params.id}`)
             },
             {
                 path:'/Mybids',

@@ -12,7 +12,7 @@ const JobCategory = () => {
     const { isPending, isLoading, data } = useQuery({
         queryKey: ['jobsData'],
         queryFn: async () =>
-            await fetch('http://localhost:3000/jobs')
+            await fetch('https://jobbidderhub-server.vercel.app/jobs')
                 .then(res => res.json())
                 .then(data => {
                     return data;

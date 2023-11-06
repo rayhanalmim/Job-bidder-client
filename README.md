@@ -1,8 +1,11 @@
-# React + Vite
+# https://verdant-pie-9e3ec9.netlify.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Key Features:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- This website has a user authentication system, allowing users to sign in and log in. Users can also sign in with their email credentials. This authentication system is implemented using Firebase.
+- After logging in, users can access private routes where they can post jobs and place bids on jobs posted by other users. When a job is posted, other users can place bids on it, and these bid requests are added to the 'Bids Request' page.
+- Users have the ability to accept or reject bid requests placed by other users. If a user rejects a bid, the bid status is updated to 'Cancelled.' On the other hand, if a bid is accepted, the bid status transitions to 'In Progress.
+- After bidding on a job, the details of the bid are added to the 'My Bids' section with an initial status of 'Pending.' If the bid is canceled by the job owner, the status is updated to 'Rejected.' If it's accepted, the status changes to 'In Progress,' and the 'Complete' button becomes enabled. After clicking the 'Complete' button, the bid status updates to 'Completed,' and the 'Complete' button disappears. Conversely, if the status is 'Completed,' the job owner can see 'Progress Complete' in the 'Bids Request' section.
+- User-specific API information is secured using JWT tokens, ensuring that no user can access the personal API data of other users.
+- On the backend, a sorting method has been implemented to sort job data according to their status in the 'My Bids' section. Users can sort their data based on their status. Users can also bid on their own posted jobs. After logging in, users can access their information on the navbar. If a user logs out, all private routes will disappear, and the JWT token will be removed from cookies.
+- There are some other features on this website. On the backend, a sorting method has been implemented according to the job status of bids. Users can sort data according to their status in the 'My Bids' section. Users cannot bid on their own posted jobs. After logging in, users can see their information on the navbar. If a user logs out, all private routes will disappear, and the JWT token will also be removed from cookies.
