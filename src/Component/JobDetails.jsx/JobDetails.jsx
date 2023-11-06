@@ -21,9 +21,9 @@ const JobDetails = () => {
         const clintEmail = form.clintEmail.value;
         const OfferedPrice = form.price.value;
         const clintDateline = form.date.value;
-        const stutas = 'pending';
+        const status = 'pending';
         
-        const clintData = {...job, clintEmail, OfferedPrice, clintDateline, stutas}
+        const clintData = {...job, clintEmail, OfferedPrice, clintDateline, status}
         console.log(clintData)
 
         axios.post('http://localhost:3000/bids', clintData)
@@ -82,7 +82,7 @@ const JobDetails = () => {
                     </div>
                    
                     {
-                        user.email === job.email ? <button disabled type="submit" className="bg-gray-600 border text-white text-lg font-semibold  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-40 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com">Bit on the project<ImBlocked className="inline-block ml-3"></ImBlocked></button> 
+                        user.email === job.email ? <button disabled type="submit" className="bg-gray-600 border text-white text-lg font-semibold  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-40 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com">Can not Bit on this project<ImBlocked className="inline-block ml-3"></ImBlocked></button> 
                         : <button type="submit" className="bg-gray-600 hover:bg-gray-900 border text-white text-lg font-semibold  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-40 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com">Bit on the project</button>
                     }
 
