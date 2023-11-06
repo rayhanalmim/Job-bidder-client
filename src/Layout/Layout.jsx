@@ -9,11 +9,13 @@ import MyJobs from "../Component/JobDetails.jsx/Jobs/MyJobs";
 import EditMyJobs from "../Component/JobDetails.jsx/Jobs/EditMyJobs";
 import MyBids from "../Component/JobBids/MyBids";
 import BidsReq from "../Component/JobBids/BidsReq";
+import ErrorPage from "../Component/HomePage/ErrorPage";
 
 const Layout = createBrowserRouter([
     {
         path:'/',
         element:<Root></Root>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',

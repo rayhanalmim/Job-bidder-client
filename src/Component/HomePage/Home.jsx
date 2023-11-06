@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import JobCategory from "./JobCategory";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
             <div>
                 <JobCategory></JobCategory>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

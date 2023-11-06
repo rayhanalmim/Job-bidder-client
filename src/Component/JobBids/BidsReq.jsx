@@ -80,16 +80,16 @@ const BidsReq = () => {
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
-                                Product name
+                                job title
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Color
+                                clint email
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Category
+                                deadline
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Price
+                                Offer price
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Action
@@ -141,7 +141,37 @@ const BidsReq = () => {
                                             </div>
                                           )}
                                         </Step>
-                                        
+                                        <Step>
+                                          {({ accomplished, index }) => (
+                                            <div
+                                              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                            >
+                                              {index + 1}
+                                            </div>
+                                          )}
+                                        </Step>
+                                      </ProgressBar></div>
+                                    }
+                                    {
+                                        job.status === 'complited' && <div className="pr-8"><ProgressBar percent={100}>
+                                        <Step>
+                                          {({ accomplished, index }) => (
+                                            <div
+                                              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                            >
+                                              {index + 1}
+                                            </div>
+                                          )}
+                                        </Step>
+                                        <Step>
+                                          {({ accomplished, index }) => (
+                                            <div
+                                              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                            >
+                                              {index + 1}
+                                            </div>
+                                          )}
+                                        </Step>
                                         <Step>
                                           {({ accomplished, index }) => (
                                             <div

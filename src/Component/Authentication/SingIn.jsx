@@ -48,7 +48,7 @@ const SingIn = () => {
 
         singInWithGoogle()
             .then(() => {
-                toast.success('log in successfully', {
+                toast.success('Log in successfully', {
                     position: "top-left",
                     theme: "dark",
                 });
