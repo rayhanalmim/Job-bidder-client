@@ -4,6 +4,9 @@ import { AuthContext } from "../Authentication/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
+import './bids.css';
 
 const BidsReq = () => {
     const { user, looding } = useContext(AuthContext);
@@ -43,6 +46,24 @@ const BidsReq = () => {
                 console.log(res.data);
                 if (res.data.modifiedCount>0) {
                     toast.error('rejected', {
+                        position: "top-left",
+                        theme: "dark",
+                    });
+                    refetch()
+                }
+            })
+    }
+    const handleAccept = (id) =>{
+        const data = { status: 'accept' };
+        console.log(data);
+
+        console.log(data)
+
+        axios.put(`http://localhost:3000/approve/${id}`, data)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount>0) {
+                    toast.success('accepted', {
                         position: "top-left",
                         theme: "dark",
                     });
@@ -94,13 +115,43 @@ const BidsReq = () => {
                                 </td>
                                 <td className="pl-6 py-4">
                                     {
-                                        job.status === 'pending' && <div><button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accpt</button>
+                                        job.status === 'pending' && <div><button onClick={()=>handleAccept(job._id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Accpt</button>
                                         <button onClick={()=>handleReject(job._id)} className="font-medium pl-4 text-blue-600 dark:text-blue-500 hover:underline">Reject</button></div>
                                     }
                                     {
-                                        job.status === 'reject' && <div>Cancelled</div>
+                                        job.status === 'reject' && <div className="font-semibold text-red-600">Cancelled</div>
                                     }
-                                    
+                                    {
+                                        job.status === 'accept' && <div className="pr-8"><ProgressBar percent={5}>
+                                        <Step>
+                                          {({ accomplished, index }) => (
+                                            <div
+                                              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                            >
+                                              {index + 1}
+                                            </div>
+                                          )}
+                                        </Step>
+                                        <Step>
+                                          {({ accomplished, index }) => (
+                                            <div
+                                              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                            >
+                                              {index + 1}
+                                            </div>
+                                          )}
+                                        </Step>
+                                        <Step>
+                                          {({ accomplished, index }) => (
+                                            <div
+                                              className={`indexedStep ${accomplished ? "accomplished" : null}`}
+                                            >
+                                              {index + 1}
+                                            </div>
+                                          )}
+                                        </Step>
+                                      </ProgressBar></div>
+                                    }
                                 </td>
                             </tr>)
                         }
