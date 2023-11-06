@@ -2,13 +2,21 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+console.log(import.meta.env.VITE_APIKEY)
+console.log(import.meta.env.VITE_AUTHDOMAIN)
+console.log(import.meta.env.VITE_PROJECTID)
+console.log(import.meta.env.VITE_STORAGEBUCKET)
+console.log(import.meta.env.VITE_MESSAGINGSENDERID)
+console.log(import.meta.env.VITE_APPID)
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBmQqCjlV5adwYpCIZw4xKdIwz_Xyqf_ag",
-  authDomain: "job-bideer-hub.firebaseapp.com",
-  projectId: "job-bideer-hub",
-  storageBucket: "job-bideer-hub.appspot.com",
-  messagingSenderId: "821446784709",
-  appId: "1:821446784709:web:5420fb0eab00892058a2ac"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
