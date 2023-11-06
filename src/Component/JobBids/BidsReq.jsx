@@ -141,6 +141,7 @@ const BidsReq = () => {
                                             </div>
                                           )}
                                         </Step>
+                                        
                                         <Step>
                                           {({ accomplished, index }) => (
                                             <div
