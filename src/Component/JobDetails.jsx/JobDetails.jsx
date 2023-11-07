@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authentication/AuthProvider";
 import { ImBlocked } from 'react-icons/im';
 import axios from "axios";
@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const JobDetails = () => {
     const {user, looding} = useContext(AuthContext);
+    const navigate = useNavigate();
     const job = useLoaderData();
     const { jobTitle, deadline, description, maxPrice, minPrice} = job;
 
@@ -25,6 +26,7 @@ const JobDetails = () => {
         
         const clintData = {...job, clintEmail, OfferedPrice, clintDateline, status}
         console.log(clintData)
+        clintData._id = clintData._id + clintEmail;
 
         axios.post('https://jobbidderhub-server.vercel.app/bids', clintData)
         .then(res =>{
@@ -36,6 +38,7 @@ const JobDetails = () => {
                     'success'
                 )
                 form.reset();
+                navigate('/Mybids');
             }
         })
         .catch(() =>{

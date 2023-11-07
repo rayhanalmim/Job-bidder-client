@@ -2,9 +2,11 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthProvider";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddJobs = () => {
     const { user, looding } = useContext(AuthContext);
+    const navigate = useNavigate();
     if (looding) {
         return <div className="flex justify-center"><span className="loading loading-spinner loading-md"></span></div>;
     }
@@ -35,6 +37,7 @@ const AddJobs = () => {
                         'success'
                     )
                     form.reset();
+                    navigate('/Myjobs');
                 }
             })
     }

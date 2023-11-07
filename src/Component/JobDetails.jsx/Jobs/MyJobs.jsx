@@ -32,7 +32,6 @@ const MyJobs = () => {
     if (isPending) {
         return <div className="flex justify-center"><span className="loading loading-spinner loading-md"></span></div>;
     }
-    console.log(data)
 
     const handleDelete = (id) =>{
         console.log(id);
